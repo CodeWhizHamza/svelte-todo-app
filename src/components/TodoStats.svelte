@@ -3,8 +3,10 @@
   import ClearCompleted from './ClearCompleted.svelte'
   import TodoFilter from './TodoFilter.svelte'
 
-  $: statsString = `${$TodoStore.length} task${
-    $TodoStore.length === 1 ? '' : 's'
+  $: todosRemaining =
+    $TodoStore.length - $TodoStore.filter((todo) => todo.done).length
+  $: statsString = `${todosRemaining} task${
+    todosRemaining === 1 ? '' : 's'
   } left`
 </script>
 
